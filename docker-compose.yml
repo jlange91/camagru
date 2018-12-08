@@ -20,7 +20,7 @@ services:
   container_name: phpmyadmin
   restart: always
   ports:
-   - 8081:80
+   - 81:80
   links:
     - db:db
 
@@ -36,7 +36,7 @@ services:
     - php
 
  php:
-  build: ./php
+  build: ./Dockerfiles/php
   container_name: php
   volumes:
    - ./srcs:/var/www
