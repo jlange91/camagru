@@ -7,6 +7,11 @@
 
 ?>
 <html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <title> Camagru </title>
+  </head>
   <body>
     <?php include('header/index.php'); ?>
     <?php include(($page[$urlpage]) ? ($page[$urlpage]) : ('404.php')); ?>
