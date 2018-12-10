@@ -1,7 +1,7 @@
 <?php
 
 $host = $_ENV['DOCKER_IP'];
-$dbname = 'test';
+$dbname = 'camagru';
 $dsn = "mysql:dbname={$dbname};host={$host}";
 $usr = 'root';
 $pwd = 'root';

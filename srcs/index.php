@@ -8,7 +8,8 @@
 ?>
 <html>
   <body>
-    <?php require('header/index.php'); ?>
-    <?php ($page[$urlpage]) ? require($page[$urlpage]) : die("404 Error"); ?>
+    <?php include('header/index.php'); ?>
+    <?php include(($page[$urlpage]) ? ($page[$urlpage]) : ('404.php')); ?>
+    <?php include('footer/index.php'); ?>
   </body>
 </html>
