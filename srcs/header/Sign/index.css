@@ -1,0 +1,19 @@
+#header-sign {
+  position: absolute;
+  right: 0px;
+  text-align: center;
+}
+
+#header-log-in {
+  display: inline;
+  margin-right: 10px;
+}
+
+#header-sign-up {
+  display: inline;
+  margin-right: 10px;
+}
+
+#header-sign a {
+  text-decoration: none;
+}

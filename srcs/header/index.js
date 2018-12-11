@@ -1,5 +1,6 @@
 function leftMenu() {
-  var menu = document.getElementById("header-left-menu");
+  var menu = document.getElementById('header-lm');
 
-  menu.style.left = menu.style.left * -1;
+  if (menu.style.left == '0px') menu.style.left = '-250px';
+  else menu.style.left = '0px';
 }
