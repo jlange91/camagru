@@ -25,14 +25,15 @@ $db->exec('CREATE TABLE IF NOT EXISTS Users (
     PRIMARY KEY (id)
 )');
 
-$db->exec('CREATE IF NOT EXISTS TABLE Images (
+$db->exec('CREATE TABLE IF NOT EXISTS Images (
     id        SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     date      DATETIME NOT NULL,
     path      VARCHAR(255) NOT NULL,
+    hash      VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 )');
 
-$db->exec('CREATE IF NOT EXISTS TABLE Comments (
+$db->exec('CREATE TABLE IF NOT EXISTS Comments (
     id        SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     date      DATETIME NOT NULL,
     comment   VARCHAR(255) NOT NULL,
@@ -40,10 +41,11 @@ $db->exec('CREATE IF NOT EXISTS TABLE Comments (
     PRIMARY KEY (id)
 )');
 
-// $db->exec('CREATE IF NOT EXISTS TABLE Likes (
-//     id        SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-//     image_id  SMALLINT UNSIGNED NOT NULL,
-//     PRIMARY KEY (id)
-// )');
+$db->exec('CREATE TABLE IF NOT EXISTS Likes (
+    id        SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    image_id  SMALLINT UNSIGNED NOT NULL,
+    user_id   SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (id)
+)');
 
 ?>

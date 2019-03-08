@@ -1,0 +1,14 @@
+.card {
+    margin: 10px;
+}
+
+#card-wrapper {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  #card-wrapper {
+    width: 50%;
+    margin: 0 auto;
+  }
+}

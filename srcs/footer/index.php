@@ -1,3 +1,4 @@
+<style><?php include("{$path}/footer/index.css"); ?></style>
 <footer>
-  <h1>footer<h1>
+  <div>footer<div>
 </footer>
