@@ -4,6 +4,7 @@
   $urlpage = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
   $path = '/var/www';
   $page = array('/' => "{$path}/pages/index/index.php",
+                '/signup' => "{$path}/pages/signup/index.php",
                 '/install' => "{$path}/install.php");
 
 ?>

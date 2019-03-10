@@ -1,0 +1,15 @@
+form {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+  background: blue;
+}
+
+.input {
+  width: 60%;
+}
+
+.textfield {
+  display: inline;
+  margin: 10px;
+}
