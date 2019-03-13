@@ -20,6 +20,5 @@
   <body>
     <?php include("{$path}/header/index.php"); ?>
     <?php include(($page[$urlpage]) ? ($page[$urlpage]) : ('404.php')); ?>
-    <?php include("{$path}/footer/index.php"); ?>
   </body>
 </html>

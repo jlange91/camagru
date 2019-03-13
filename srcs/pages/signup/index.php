@@ -1,7 +1,7 @@
-<style><?php include("{$path}/pages/signup/index.css"); ?></style>
-<div id="signup-wrapper">
-  <form>
-    <div class="textfield">Email: </div>
-    <input class="input" type="text" >
-  </form>
-</div>
+<?php
+if ($_POST['email'] && $_POST['username'] && $_POST['password'] && $_POST['confirmPassword'])
+{
+  echo $_POST['email'];
+}
+ ?>
+<?php include("{$path}/components/signup_form/index.php"); ?>
