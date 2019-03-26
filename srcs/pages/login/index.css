@@ -1,0 +1,46 @@
+#login-wrapper {
+  width: 60%;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#login-form {
+  margin: 0 auto;
+}
+
+#login-title {
+  padding: 10px;
+}
+
+.input {
+  width: 60%;
+  margin: 10px;
+}
+
+.textfield {
+  display: inline;
+  margin: 10px;
+}
+
+#login-send-button {
+  width: 60%;
+  right: 0;
+  margin: 30px;
+}
+
+#login-send-button.input {
+ box-shadow: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #login-wrapper {
+    width: 100%;
+  }
+  .input {
+    width: 80%;
+  }
+  .card {
+    box-shadow: none;
+  }
+}

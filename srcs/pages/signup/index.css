@@ -1,0 +1,15 @@
+#signup-error {
+  background: #ff2b56;
+  width: 50%;
+  text-align: center;
+  margin: 10 auto;
+  color: #fff;
+}
+
+#signup-success {
+  background: #23d160;
+  width: 50%;
+  text-align: center;
+  margin: 10 auto;
+  color: #fff;
+}

@@ -5,6 +5,7 @@
   $path = '/var/www';
   $page = array('/' => "{$path}/pages/index/index.php",
                 '/signup' => "{$path}/pages/signup/index.php",
+                '/login' => "{$path}/pages/login/index.php",
                 '/install' => "{$path}/install.php");
 
 ?>
