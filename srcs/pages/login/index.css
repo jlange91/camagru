@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+#login-error {
+  background: #ff2b56;
+  width: 50%;
+  text-align: center;
+  margin: 10 auto;
+  color: #fff;
+}
+
 #login-form {
   margin: 0 auto;
 }
@@ -30,7 +38,7 @@
 }
 
 #login-send-button.input {
- box-shadow: none;
+  box-shadow: none;
 }
 
 @media only screen and (max-width: 600px) {
