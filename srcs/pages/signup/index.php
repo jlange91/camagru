@@ -1,5 +1,8 @@
 <style><?php include("{$path}/pages/signup/index.css"); ?></style>
 <?php
+  include("{$path}/pages/signup/send_email.php");
+  if (is_connect())
+    echo '<script>document.location.href="/";</script>';
   include("{$path}/components/signup_form/index.php");
 
   $strError = "Error in the form :<br/><br/>";
@@ -106,14 +109,16 @@
     $fails += confirmPasswordChecker();
     if ($fails === 0)
     {
-      $req = $db->prepare('INSERT INTO Users (email, username, password, completed) VALUES (:email,:username,:password,0)');
+      $req = $db->prepare('INSERT INTO Users (email, username, password, completed, mailHash) VALUES (:email,:username,:password,0,:mailHash)');
       $req->execute(array(':email' => $_POST['email'],
                         ':username' => $_POST['username'],
-                        ':password' => hash_password($_POST['password'])));
+                        ':password' => hash_password($_POST['password']),
+                        ':mailHash' => hash_email($_POST['email'], $_POST['password'], $_POST['username'])));
+      send_confirm_mail($_POST['email'], $_POST['password'], $_POST['username']);
       echo "
       <div id='signup-success' class='box'>
         <div class='content'>
-          Success
+          An email has been sent to confirm your registration.
         </div>
       </div>";
     }

@@ -20,7 +20,8 @@ $db->exec('CREATE TABLE IF NOT EXISTS Users (
     id        SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     email     VARCHAR(255) NOT NULL,
     username  VARCHAR(40) NOT NULL,
-    password  VARCHAR(255) NOT NULL,
+    password  VARCHAR(512) NOT NULL,
+    mailHash  VARCHAR(256) NOT NULL,
     completed BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
 )');

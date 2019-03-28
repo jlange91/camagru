@@ -2,6 +2,9 @@
 <?php
   if (is_connect())
     echo '<script>document.location.href="/";</script>';
+  if (isset($_GET['sendmail']))
+    echo 'lol';
+  include("{$path}/pages/login/confirm_email.php");
   $loginForm = '
   <div id="login-wrapper" class="card">
     <h1 id="login-title" class="title is-2">Log In</h1>
@@ -18,9 +21,19 @@
     $value = $req->fetchAll();
     if ($value && $value[0]['password'] == hash_password($_POST['password']))
     {
-      $_SESSION['username'] = $_POST['username'];
-      $_SESSION['password'] = $_POST['password'];
-      echo '<script>document.location.href="/";</script>';
+      if ($value[0]['completed'])
+      {
+        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['password'] = hash_password($_POST['password']);
+        echo '<script>document.location.href="/";</script>';
+      }
+      else {
+        echo $loginForm . "
+        <div id='login-error' class='box'>
+          <p>Please confirm your email.</p>
+          <a href='?sendmail'>Send me back a confirmation mail.</a>
+        </div>";
+      }
     }
     else if ($value)
     {
