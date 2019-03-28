@@ -1,6 +1,8 @@
 <?php
 
+  session_start();
   require('pdo.php');
+  require('connection.php');
   $urlpage = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
   $path = '/var/www';
   $page = array('/' => "{$path}/pages/index/index.php",

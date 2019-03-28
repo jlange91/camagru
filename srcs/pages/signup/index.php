@@ -109,7 +109,7 @@
       $req = $db->prepare('INSERT INTO Users (email, username, password, completed) VALUES (:email,:username,:password,0)');
       $req->execute(array(':email' => $_POST['email'],
                         ':username' => $_POST['username'],
-                        ':password' => $_POST['password']));
+                        ':password' => hash_password($_POST['password'])));
       echo "
       <div id='signup-success' class='box'>
         <div class='content'>

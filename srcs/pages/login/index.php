@@ -1,6 +1,7 @@
 <style><?php include("{$path}/pages/login/index.css"); ?></style>
-
 <?php
+  if (is_connect())
+    echo '<script>document.location.href="/";</script>';
   $loginForm = '
   <div id="login-wrapper" class="card">
     <h1 id="login-title" class="title is-2">Log In</h1>
@@ -15,7 +16,7 @@
     $req = $db->prepare('SELECT * FROM Users WHERE username = :username');
     $req->execute(array(':username' => $_POST['username']));
     $value = $req->fetchAll();
-    if ($value && $value[0]['password'] == $_POST['password'])
+    if ($value && $value[0]['password'] == hash_password($_POST['password']))
     {
       $_SESSION['username'] = $_POST['username'];
       $_SESSION['password'] = $_POST['password'];
