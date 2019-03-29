@@ -5,6 +5,14 @@
   margin: 0 auto;
 }
 
+#login-success {
+  background: #23d160;
+  width: 50%;
+  text-align: center;
+  margin: 10 auto;
+  color: #fff;
+}
+
 #login-error {
   background: #ff2b56;
   width: 50%;

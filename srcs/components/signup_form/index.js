@@ -32,9 +32,7 @@ function emailChecker() {
 function usernameChecker() {
   var ret;
 
-  ret = username.match(
-    /^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/,
-  );
+  ret = username.match(/^[a-zA-Z0-9\.\-\_]{4,20}$/);
   document.getElementById('signup-username').className = ret
     ? 'input is-success'
     : 'input is-danger';

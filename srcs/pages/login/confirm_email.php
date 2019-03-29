@@ -10,7 +10,10 @@
       $req = $db->prepare('UPDATE Users SET mailHash = "",
                                   completed = 1 WHERE email = :email');
       $req->execute(array(':email' => $_GET['email']));
-      echo 'Your account is now completed.';
+      echo "
+      <div id='login-success' class='box'>
+        <div class='content'>Your account is now completed.</div>
+      </div>";
     }
   }
 

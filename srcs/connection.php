@@ -17,4 +17,9 @@
     $value = $req->fetchAll();
     return ($value && $value[0] && $value[0]['completed'] && $value[0]['password'] == $_SESSION['password']) ? true : false;
   }
+
+  function disconnect() {
+      unset($_SESSION['username']);
+      unset($_SESSION['password']);
+  }
 ?>

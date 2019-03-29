@@ -8,6 +8,7 @@
   $page = array('/' => "{$path}/pages/index/index.php",
                 '/signup' => "{$path}/pages/signup/index.php",
                 '/login' => "{$path}/pages/login/index.php",
+                '/post' => "{$path}/pages/post/index.php",
                 '/install' => "{$path}/install.php");
 
 ?>
@@ -17,6 +18,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/assets/camagru_icon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title> Camagru </title>
   </head>

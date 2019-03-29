@@ -41,7 +41,7 @@
     global $strError;
     global $db;
 
-    if (!preg_match('/^(?=.{4,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/', $_POST['username'])) {
+    if (!preg_match('/^[a-zA-Z0-9\.\-\_]{4,20}$/', $_POST['username'])) {
       $strError = $strError . "Username Error.<br/>";
       return (1);
     }
