@@ -5,69 +5,80 @@
 <style>
 #container {
 	margin: 0px auto;
-	width: 500px;
-	height: 375px;
-	border: 10px #00d1b2 solid;
+	width: 80%;
+  max-width: 580px;
 }
 #videoElement {
-	width: 500px;
-	height: 375px;
-	background-color: #008071;
+	width: 100%;
 }
 
-.blur{filter: blur(5px);}
-.brightness{filter: brightness(0.4);}
-.contrast{filter: contrast(200%);}
-.grayscale{filter: grayscale(50%);}
-.hue-rotate{filter: hue-rotate(90deg);}
-.invert{filter: invert(75%);}
-.saturate{filter: saturate(30%);}
-.sepia{filter: sepia(60%);}
 </style>
 <div id='container'>
-<video autoplay id='videoElement'></video>
-<p><button class="capture-button">Capture video</button>
-<p><button id="cssfilters-apply">Apply CSS filter</button></p>
+  <video autoplay id='videoElement'></video>
+  <button class="capture-button">Take a picture</button>
+  <canvas style="display:none;"></canvas>
+  <img class="photo"></img>
 </div>
 <script>
-const captureVideoButton =
-  document.querySelector('.capture-button');
-const cssFiltersButton =
-  document.querySelector('#cssfilters-apply');
-const video =
-  document.querySelector('video');
+  class WebcamCamagru {
+    constructor() {
+    }
 
-let filterIndex = 0;
-const filters = [
-  'grayscale',
-  'sepia',
-  'blur',
-  'brightness',
-  'contrast',
-  'hue-rotate',
-  'saturate',
-  'invert',
-  ''
-];
+    open() {
+      const constraints = {
+        video: true
+      };
+      navigator.mediaDevices.getUserMedia(constraints).
+        then(this.handleSuccess).catch(this.handleError);
+    }
 
-captureVideoButton.onclick = function() {
-  const constraints = {
-    video: true
-  };
-  navigator.mediaDevices.getUserMedia(constraints).
-    then(handleSuccess).catch(handleError);
-};
+    closeCamera() {
+      if (this.stream)
+        this.stream.stop();
+    }
 
-cssFiltersButton.onclick = video.onclick = function() {
-  video.className = filters[filterIndex++ % filters.length];
-};
+    handleSuccess(stream) {
+      document.querySelector('video').srcObject = stream;
+    }
 
-function handleSuccess(stream) {
-  video.srcObject = stream;
-}
+    handleError(stream) {
+      console.log('Something went wrong.');
+    }
 
-function handleError(stream) {
-  console.log('Something went wrong.');
-}
+    takeSnapshot(){
+
+      var hidden_canvas = document.querySelector('canvas'),
+      video = document.querySelector('video'),
+      image = document.querySelector('img.photo'),
+
+      // Get the exact size of the video element.
+      width = video.videoWidth,
+      height = video.videoHeight,
+
+      // Context object for working with the canvas.
+      context = hidden_canvas.getContext('2d');
+
+      // Set the canvas to the same dimensions as the video.
+      hidden_canvas.width = width;
+      hidden_canvas.height = height;
+
+      // Draw a copy of the current frame from the video on the canvas.
+      context.drawImage(video, 0, 0, width, height);
+
+      // Get an image dataURL from the canvas.
+      var imageDataURL = hidden_canvas.toDataURL('image/png');
+
+      // Set the dataURL as source of an image element, showing the captured photo.
+      image.setAttribute('src', imageDataURL);
+      document.querySelector('video').style.display = "none;"
+
+    }
+  }
+
+  var Webcam = new WebcamCamagru();
+
+  Webcam.open();
+document.querySelector('.capture-button').onclick = Webcam.closeCamera;
+
 
 </script>
