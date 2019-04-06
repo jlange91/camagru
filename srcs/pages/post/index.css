@@ -15,10 +15,17 @@
 .snapshot-button {
   z-index: 1000;
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 50%;
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%)
+}
+
+.import-button {
+  z-index: 1000;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 
 video {
