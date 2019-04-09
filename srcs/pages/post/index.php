@@ -1,7 +1,9 @@
 <style><?php include("{$path}/pages/post/index.css"); ?></style>
 <?php
-  if (is_connect() == 0)
+  if (is_connect() == 0) {
     echo '<script>document.location.href="/signup";</script>';
+    die("");
+  }
 ?>
 <div id='container'>
   <img src="/assets/filters/filter1.png" style="z-index:101;" class="superposition"></img>
@@ -31,3 +33,4 @@
 
 
 </script>
+<?php include("{$path}/pages/post/filters/index.php"); ?>

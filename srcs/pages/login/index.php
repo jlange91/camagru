@@ -1,7 +1,9 @@
 <style><?php include("{$path}/pages/login/index.css"); ?></style>
 <?php
-  if (is_connect())
+  if (is_connect()) {
     echo '<script>document.location.href="/";</script>';
+    die("You are already connected.");
+  }
   if (isset($_GET['sendmail']))
     echo 'lol';
   include("{$path}/pages/login/confirm_email.php");
