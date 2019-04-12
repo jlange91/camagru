@@ -102,7 +102,13 @@
   var currId = 0;
 
   function placeFilter() {
-    filter[0].setAttribute("src", "/assets/filters/filter" + currId + ".png");
+    if (currId == 0) {
+      filter[0].style.display = "none";
+    }
+    else {
+      filter[0].style.display = "inline";
+      filter[0].setAttribute("src", "/assets/filters/filter" + currId + ".png");
+    }
   }
 
   function placeItems() {
@@ -124,7 +130,6 @@
       currDeg = currDeg + gapDeg;
       currId = (currId - 1 < 0) ? nbItems - 1 : currId - 1;
     }
-    console.log(currId);
     context3d.style.cssText =
       "-webkit-transform: rotateY("+currDeg+"deg);"+
       "-moz-transform: rotateY("+currDeg+"deg);"+

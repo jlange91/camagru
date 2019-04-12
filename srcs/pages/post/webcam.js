@@ -13,7 +13,7 @@ function WebcamCamagru() {
         container.prepend(video);
         document.querySelector('#post-wrapper-button').style.display = "inline";
         document.querySelector('.snapshot-button').disabled = false;
-      }).catch(function () {
+      }).catch(function (err) {
         video.remove();
         console.log('Something went wrong.');
         console.log(err);
