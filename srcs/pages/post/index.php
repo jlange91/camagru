@@ -6,7 +6,7 @@
   }
 ?>
 <div id='container'>
-  <img src="/assets/filters/filter1.png" style="z-index:101;" class="superposition"></img>
+  <img class="superposition filter" onerror="this.style.display='none';" onload="this.style.display='inline';"></img>
   <div id="post-wrapper-button">
     <img class="superposition" src="/assets/post.png"></img>
     <button class="snapshot-button button" disabled><i class="material-icons">photo_camera</i></button>

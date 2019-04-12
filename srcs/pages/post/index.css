@@ -7,7 +7,7 @@
 }
 
 .superposition {
-  position : absolute;
+  position: absolute;
   width: 1024px;
   height: 768px;
 }
@@ -18,7 +18,11 @@
   bottom: 5px;
   left: 50%;
   -webkit-transform: translateX(-50%);
-  transform: translateX(-50%)
+  transform: translateX(-50%);
+}
+
+.filter {
+  z-index: 101;
 }
 
 .import-button {
@@ -32,8 +36,7 @@ video {
   z-index: 1;
 }
 
-@media only screen and (max-width: 1280px)
-{
+@media only screen and (max-width: 1280px) {
   #container {
     width: 680px;
     height: 510px;
@@ -44,8 +47,7 @@ video {
   }
 }
 
-@media only screen and (max-width: 680px)
-{
+@media only screen and (max-width: 680px) {
   #container {
     width: 320px;
     height: 240px;

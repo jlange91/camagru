@@ -75,6 +75,9 @@
   <div class="carousel">
     <div class="context3d">
       <div class="item-wrapper">
+        <div class="item"><img src="/assets/filters/filter0.png"></img></div>
+      </div>
+      <div class="item-wrapper">
         <div class="item"><img src="/assets/filters/filter1.png"></img></div>
       </div>
       <div class="item-wrapper">
@@ -92,10 +95,15 @@
 
   const context3d = document.querySelector('.context3d'),
         items = document.querySelectorAll('.item'),
+        filter = document.querySelectorAll('.filter'),
         nbItems = items.length,
         gapDeg = 360 / nbItems;
   var currDeg = 0;
   var currId = 0;
+
+  function placeFilter() {
+    filter[0].setAttribute("src", "/assets/filters/filter" + currId + ".png");
+  }
 
   function placeItems() {
     var gap = 0;
@@ -110,12 +118,13 @@
   function rotate(e){
     if(e =="n"){
       currDeg = currDeg - gapDeg;
-      currId = currId - 1;
+      currId = (currId + 1 >= nbItems) ? 0 : currId + 1;
     }
     if(e =="p"){
       currDeg = currDeg + gapDeg;
-      currId = currId + 1;
+      currId = (currId - 1 < 0) ? nbItems - 1 : currId - 1;
     }
+    console.log(currId);
     context3d.style.cssText =
       "-webkit-transform: rotateY("+currDeg+"deg);"+
       "-moz-transform: rotateY("+currDeg+"deg);"+
@@ -128,10 +137,12 @@
         "-o-transform: rotateY("+(-currDeg)+"deg);" +
         "transform: rotateY("+(-currDeg)+"deg);";
       });
+      placeFilter();
   }
 
   document.querySelector('.next').onclick = function() {rotate("n");};
   document.querySelector('.prev').onclick = function() {rotate("p");};
   placeItems();
+  placeFilter();
 
 </script>
