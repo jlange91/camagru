@@ -1,18 +1,19 @@
 function WebcamCamagru() {
   this.openCamera = function() {
+    this._removeImg();
     const constraints = { video: true },
           video = document.createElement("video"),
-          container = document.querySelector('#container');
+          container = document.querySelector('#post-container');
 
     video.setAttribute('autoplay', "true");
-    video.setAttribute('id', "cam");
-    video.setAttribute('class', "superposition");
+    video.setAttribute('id', "post-cam");
+    video.setAttribute('class', "post-superposition");
     navigator.mediaDevices.getUserMedia(constraints).
       then(function(stream) {
         video.srcObject = stream;
         container.prepend(video);
         document.querySelector('#post-wrapper-button').style.display = "inline";
-        document.querySelector('.snapshot-button').disabled = false;
+        document.querySelector('.post-snapshot-button').disabled = false;
       }).catch(function (err) {
         video.remove();
         console.log('Something went wrong.');
@@ -21,7 +22,7 @@ function WebcamCamagru() {
   }
 
   this.closeCamera = function() {
-    const video = document.querySelector('video');
+    const video = document.querySelector('#post-cam');
 
     if (video) {
       const stream = video.srcObject;
@@ -35,9 +36,16 @@ function WebcamCamagru() {
     }
   }
 
+  this._removeImg = function() {
+    let remove = document.querySelector('.post-cam-img');
+
+    if (remove)
+     remove.remove();
+  }
+
   this._getImageDimensions = function(file) {
     return new Promise (function (resolved, rejected) {
-      var i = new Image()
+      var i = new Image();
       i.onload = function(){
         resolved({w: i.width, h: i.height})
       };
@@ -49,7 +57,7 @@ function WebcamCamagru() {
     if (this.imageDataURL) {
       this.closeCamera();
       let image = document.createElement("img");
-      image.setAttribute('class', "cam-img superposition");
+      image.setAttribute('class', "post-cam-img post-superposition");
       image.setAttribute('src', this.imageDataURL);
       container.prepend(image);
     }
@@ -59,7 +67,7 @@ function WebcamCamagru() {
   }
 
   this.takeSnapshot = function(){
-    const video = document.querySelector('video');
+    const video = document.querySelector('#post-cam');
 
     if (video) {
       const hidden_canvas = document.createElement("canvas"),

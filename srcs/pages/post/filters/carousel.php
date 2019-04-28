@@ -1,31 +1,32 @@
 <style>
 
-.carousel {
+.post-carousel {
   margin: 20 auto;
-    width: 320px;
-    height: 240px;
+  width: 320px;
+  height: 240px;
   position: relative;
   perspective: 2000px;
 }
 
-.context3d {
+.post-context3d {
   height: 100%;
   width: 100%;
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-.context3d div {
+
+.post-context3d div {
   transform-style: preserve-3d;
 }
 
-.item {
+.post-item {
   background: #ed1c24;
   display: block;
   position: absolute;
   background: #000;
-    width: 320px;
-    height: 240px;
+  width: 320px;
+  height: 240px;
   line-height: 200px;
   font-size: 2em;
   text-align: center;
@@ -35,67 +36,58 @@
   transition: transform 1s;
 }
 
-.next, .prev {
-  color: #444;
-  padding: 1em 2em;
-  cursor: pointer;
-  background: #CCC;
-  border-radius: 5px;
-  border-top: 1px solid #FFF;
-  box-shadow: 0 5px 0 #999;
-  transition: box-shadow 0.1s, top 0.1s;
-}
-.next:hover, .prev:hover { color: #000; }
-.next:active, .prev:active {
-  top: 104px;
-  box-shadow: 0 1px 0 #999;
-}
-.next { right: 5em; }
-.prev { left: 5em; }
-
 @media only screen and (max-width: 680px)
 {
-  .carousel {
-    width: 180px;
-    height: 135px;
+  .post-carousel {
+    width: 200px;
+    height: 150px;
   }
-  .item {
-    width: 180px;
-    height: 135px;
+  .post-item {
+    width: 200px;
+    height: 150px;
   }
 }
 
-.carousel-wrapper {
+.post-carousel-wrapper {
   overflow: hidden;
 }
 
+.post-button-next {
+  right: 1px;
+    position: absolute;
+    top: 70%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-30%); /* tiré de la moitié de sa propre hauteur */
+  }
+.post-button-prev {
+  left: 1px;
+    position: absolute;
+    top: 70%; /* poussé de la moitié de hauteur du référent */
+  transform: translateY(-30%); /* tiré de la moitié de sa propre hauteur */}
 
 </style>
-<div class="carousel-wrapper">
-  <div class="carousel">
-    <div class="context3d">
-      <div class="item-wrapper">
-        <div class="item"><img src="/assets/filters/filter0.png"></img></div>
+<div class="post-carousel-wrapper">
+  <div class="post-carousel">
+    <div class="post-context3d">
+      <div class="post-item-wrapper">
+        <div class="post-item"><img src="/assets/filters/filter0.png"></img></div>
       </div>
-      <div class="item-wrapper">
-        <div class="item"><img src="/assets/filters/filter1.png"></img></div>
+      <div class="post-item-wrapper">
+        <div class="post-item"><img src="/assets/filters/filter1.png"></img></div>
       </div>
-      <div class="item-wrapper">
-        <div class="item"><img src="/assets/filters/filter2.png"></div>
+      <div class="post-item-wrapper">
+        <div class="post-item"><img src="/assets/filters/filter2.png"></div>
       </div>
-      <div class="item-wrapper">
-        <div class="item"><img src="/assets/filters/filter3.png"></div>
+      <div class="post-item-wrapper">
+        <div class="post-item"><img src="/assets/filters/filter3.png"></div>
       </div>
     </div>
   </div>
 </div>
-<div class="next">Next</div>
-<div class="prev">Prev</div>
 <script>
 
-  const context3d = document.querySelector('.context3d'),
-        items = document.querySelectorAll('.item'),
-        filter = document.querySelectorAll('.filter'),
+  const context3d = document.querySelector('.post-context3d'),
+        items = document.querySelectorAll('.post-item'),
+        filter = document.querySelectorAll('.post-filter-image'),
         nbItems = items.length,
         gapDeg = 360 / nbItems;
   var currDeg = 0;
@@ -114,11 +106,19 @@
   function placeItems() {
     var gap = 0;
 
-    document.querySelectorAll('.item-wrapper').forEach(function(element) {
+    document.querySelectorAll('.post-item-wrapper').forEach(function(element) {
       element.style.cssText =
       "transform: rotateY(" + gap + "deg) translateZ(250px)  rotateY(-" + gap + "deg);"
       gap = gap + gapDeg;
     });
+  }
+
+  function setOnClickFunction() {
+    let idNext = (currId + 1 >= nbItems) ? 0 : currId + 1;
+    let idPrevious = (currId - 1 < 0) ? nbItems - 1 : currId - 1;
+
+    items[idNext].onclick = function() {rotate("n");};
+    items[idPrevious].onclick = function() {rotate("p");};
   }
 
   function rotate(e){
@@ -143,10 +143,10 @@
         "transform: rotateY("+(-currDeg)+"deg);";
       });
       placeFilter();
+      setOnClickFunction();
   }
 
-  document.querySelector('.next').onclick = function() {rotate("n");};
-  document.querySelector('.prev').onclick = function() {rotate("p");};
+  setOnClickFunction();
   placeItems();
   placeFilter();
 

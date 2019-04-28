@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="/assets/camagru_icon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script> <?php include("{$path}/ajax/get_xml_http_request.js"); ?> </script>
     <title> Camagru </title>
   </head>
   <body>

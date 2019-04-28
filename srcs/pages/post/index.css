@@ -1,4 +1,4 @@
-#container {
+#post-container {
   position: relative;
   margin: 0 auto;
   width: 1024px;
@@ -6,13 +6,13 @@
   overflow: hidden;
 }
 
-.superposition {
+.post-superposition {
   position: absolute;
   width: 1024px;
   height: 768px;
 }
 
-.snapshot-button {
+.post-snapshot-button {
   z-index: 1000;
   position: absolute;
   bottom: 5px;
@@ -21,38 +21,38 @@
   transform: translateX(-50%);
 }
 
-.filter {
-  z-index: 101;
+.post-filter-image {
+  z-index: 2;
 }
 
-.import-button {
-  z-index: 1000;
+.post-import-button {
+  z-index: 2;
   position: absolute;
   bottom: 5px;
   right: 5px;
 }
 
-video {
+#post-cam {
   z-index: 1;
 }
 
 @media only screen and (max-width: 1280px) {
-  #container {
+  #post-container {
     width: 680px;
     height: 510px;
   }
-  .superposition {
+  .post-superposition {
     width: 680px;
     height: 510px;
   }
 }
 
 @media only screen and (max-width: 680px) {
-  #container {
+  #post-container {
     width: 320px;
     height: 240px;
   }
-  .superposition {
+  .post-superposition {
     width: 320px;
     height: 240px;
   }
