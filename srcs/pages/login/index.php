@@ -4,8 +4,6 @@
     echo '<script>document.location.href="/";</script>';
     die("You are already connected.");
   }
-  if (isset($_GET['sendmail']))
-    echo 'lol';
   include("{$path}/pages/login/confirm_email.php");
   $loginForm = '
   <div id="login-wrapper" class="card">
@@ -33,7 +31,7 @@
         echo $loginForm . "
         <div id='login-error' class='box'>
           <p>Please confirm your email.</p>
-          <a href='?sendmail'>Send me back a confirmation mail.</a>
+          <a href='?resendEmail=" . $value[0]['email'] . "'>Send me back a confirmation mail.</a>
         </div>";
       }
     }
@@ -54,4 +52,5 @@
   }
   else
     echo $loginForm;
+  include("{$path}/pages/login/resend_email.php");
 ?>
