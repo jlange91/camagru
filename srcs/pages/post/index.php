@@ -13,21 +13,15 @@
     <button class="post-import-button button"><i class="material-icons">add</i></button>
   </div>
 </div>
-
+<?php include("{$path}/pages/post/filters/carousel.php"); ?>
 <script type="text/javascript">
 
 <?php include("{$path}/pages/post/webcam.js"); ?>
 
-
-
   const container = document.querySelector('#post-container');
   var Webcam = new WebcamCamagru();
 
-
   Webcam.openCamera();
-  Webcam.closeCamera();
   document.querySelector('.post-snapshot-button').onclick = function () {Webcam.takeSnapshot();}
 
-
 </script>
-<?php include("{$path}/pages/post/filters/carousel.php"); ?>

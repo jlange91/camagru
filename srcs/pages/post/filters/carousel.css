@@ -1,0 +1,64 @@
+.post-carousel {
+  margin: 20 auto;
+  width: 320px;
+  height: 240px;
+  position: relative;
+  perspective: 2000px;
+}
+
+.post-context3d {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.post-context3d div {
+  transform-style: preserve-3d;
+}
+
+.post-item {
+  background: #ed1c24;
+  display: block;
+  position: absolute;
+  background: #000;
+  width: 320px;
+  height: 240px;
+  line-height: 200px;
+  font-size: 2em;
+  text-align: center;
+  color: #FFF;
+  opacity: 0.95;
+  border-radius: 10px;
+  transition: transform 1s;
+}
+
+@media only screen and (max-width: 680px)
+{
+  .post-carousel {
+    width: 200px;
+    height: 150px;
+  }
+  .post-item {
+    width: 200px;
+    height: 150px;
+  }
+}
+
+.post-carousel-wrapper {
+  overflow: hidden;
+}
+
+.post-button-next {
+  right: 1px;
+    position: absolute;
+    top: 70%; /* poussé de la moitié de hauteur du référent */
+    transform: translateY(-30%); /* tiré de la moitié de sa propre hauteur */
+  }
+.post-button-prev {
+  left: 1px;
+    position: absolute;
+    top: 70%; /* poussé de la moitié de hauteur du référent */
+  transform: translateY(-30%); /* tiré de la moitié de sa propre hauteur */
+}
