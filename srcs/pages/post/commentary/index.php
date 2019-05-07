@@ -14,6 +14,6 @@
   sendButton.onclick = function() {
     const filterId = Carousel.currId,
           imgBase64 = document.querySelector("#post-image").src;
-    console.log("image: " + imgBase64, "commentary: " + commentary + "\nfilter: " + filterId);
+    console.log("image: " + imgBase64, "commentary: " + commentary + "\nfilter: " + filterId + "\nxOffset: " + xOffset + "\nyOffset: " + yOffset);
   }
 </script>
