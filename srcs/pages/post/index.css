@@ -21,14 +21,36 @@
   transform: translateX(-50%);
 }
 
-.post-filter-image {
+#post-image {
   z-index: 2;
 }
 
+#post-filter-image {
+  z-index: 3;
+}
+
 .post-import-button {
-  z-index: 2;
+  z-index: 10;
   position: absolute;
   bottom: 5px;
+  right: 5px;
+}
+
+#post-wrapper-arrow-buttons, #img-upload {
+  display: none;
+}
+
+#post-back-button {
+  z-index: 10;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+#post-next-button {
+  z-index: 10;
+  position: absolute;
+  top: 5px;
   right: 5px;
 }
 

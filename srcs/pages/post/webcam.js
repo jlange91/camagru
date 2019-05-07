@@ -1,25 +1,40 @@
 function WebcamCamagru() {
   this.openCamera = function() {
-    this._removeImg();
-    const constraints = { video: true },
+    const constraints = { video: { facingMode: "user" } },
           video = document.createElement("video"),
           container = document.querySelector('#post-container');
 
     video.setAttribute('autoplay', "true");
     video.setAttribute('id', "post-cam");
     video.setAttribute('class', "post-superposition");
-    navigator.mediaDevices.getUserMedia(constraints).
-      then(function(stream) {
-        video.srcObject = stream;
+    if (navigator.mediaDevices.getUserMedia === undefined) {
+      navigator.mediaDevices.getUserMedia = function(constraints) {
+        var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+        if (!getUserMedia) {
+          return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+        }
+        return new Promise(function(resolve, reject) {
+          getUserMedia.call(navigator, constraints, resolve, reject);
+        });
+      }
+    }
+    navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+        if ("srcObject" in video) {
+          video.srcObject = stream;
+        } else {
+          video.src = window.URL.createObjectURL(stream);
+        }
+        video.onloadedmetadata = function(e) {
+          video.play();
+        };
         container.prepend(video);
-        document.querySelector('#post-wrapper-button').style.display = "inline";
         document.querySelector('.post-snapshot-button').disabled = false;
       }).catch(function (err) {
         video.remove();
-        console.log('Something went wrong.');
+        console.log('Something went wrong with camera.');
         console.log(err);
       });
-  }
+    }
 
   this.closeCamera = function() {
     const video = document.querySelector('#post-cam');
@@ -34,13 +49,7 @@ function WebcamCamagru() {
         video.remove();
       }
     }
-  }
-
-  this._removeImg = function() {
-    let remove = document.querySelector('.post-cam-img');
-
-    if (remove)
-     remove.remove();
+    document.querySelector('.post-snapshot-button').disabled = true;
   }
 
   this._getImageDimensions = function(file) {
@@ -54,12 +63,11 @@ function WebcamCamagru() {
   }
 
   this._createImg = async function() {
+    let image = document.querySelector("#post-image");
+
     if (this.imageDataURL) {
       this.closeCamera();
-      let image = document.createElement("img");
-      image.setAttribute('class', "post-cam-img post-superposition");
       image.setAttribute('src', this.imageDataURL);
-      container.prepend(image);
     }
     var dimensions = await this._getImageDimensions(this.imageDataURL);
     this.imageWidth = dimensions.w;
@@ -72,27 +80,19 @@ function WebcamCamagru() {
     if (video) {
       const hidden_canvas = document.createElement("canvas"),
 
-      // Get the exact size of the video element.
       width = video.videoWidth,
       height = video.videoHeight,
-
-      // Context object for working with the canvas.
       context = hidden_canvas.getContext('2d');
-
-      // Set the canvas to the same dimensions as the video.
       hidden_canvas.width = width;
       hidden_canvas.height = height;
-
-      // Draw a copy of the current frame from the video on the canvas.
       context.drawImage(video, 0, 0, width, height);
-
-      // Get an image dataURL from the canvas and remove canvas
       this.imageDataURL = hidden_canvas.toDataURL('image/png');
       hidden_canvas.remove();
-      document.querySelector('#post-wrapper-button').style.display = "none";
       this._createImg();
     }
     else
       console.log("Don't find video container.")
   }
 }
+
+var Webcam = new WebcamCamagru();
