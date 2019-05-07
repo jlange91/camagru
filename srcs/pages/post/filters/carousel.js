@@ -1,7 +1,8 @@
 function CarouselCamagru() {
   const context3d = document.querySelector('.post-context3d'),
         items = document.querySelectorAll('.post-item'),
-        filter = document.querySelectorAll('#post-filter-image'),
+        filter = document.querySelector('#post-filter-image'),
+        filterWrapper = document.querySelectorAll('#post-image-wrapper'),
         nbItems = items.length,
         gapDeg = 360 / nbItems;
   var currDeg = 0;
@@ -9,11 +10,19 @@ function CarouselCamagru() {
 
   this.placeFilter = function() {
     if (this.currId == 0) {
-      filter[0].style.display = "none";
+      filter.style.display = "none";
     }
     else {
-      filter[0].style.display = "inline";
-      filter[0].setAttribute("src", "/assets/filters/filter" + this.currId + ".png");
+      filter.style.display = "inline";
+      const img = new Image();
+
+      img.onload = function(){
+        filter.style.height = img.height * ratio;
+        filter.style.width = img.width * ratio;
+        filter.src = img.src;
+      }
+
+      img.src = "/assets/filters/filter" + this.currId + ".png";
     }
   }
 
@@ -73,3 +82,4 @@ function CarouselCamagru() {
 
 var Carousel = new CarouselCamagru();
 document.querySelector('.post-carousel-wrapper').onclick = function () {Carousel.rotate();}
+var filterImage = document.querySelector('#post-filter-image');
