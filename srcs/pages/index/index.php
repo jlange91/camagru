@@ -8,8 +8,8 @@
       </a>
       ";
   ?>
-  <?php include("{$path}/components/card/index.php"); ?>
-  <?php include("{$path}/components/card/index.php"); ?>
-  <?php include("{$path}/components/card/index.php"); ?>
+  <div id="publications-wrapper">
+  </div>
   <?php include("{$path}/components/card/index.php"); ?>
 </div>
+<script><?php include("{$path}/pages/index/index.js"); ?></script>

@@ -5,12 +5,13 @@
   require('connection.php');
   $urlpage = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
   $path = '/var/www';
-  $page = array('/' => "{$path}/pages/index/index.php",
-                '/signup' => "{$path}/pages/signup/index.php",
-                '/login' => "{$path}/pages/login/index.php",
-                '/post' => "{$path}/pages/post/index.php",
-                '/install' => "{$path}/install.php");
-  $ajaxPage = array('/ajax/post' => "{$path}/ajax/post.php");
+  $page = array("/" => "{$path}/pages/index/index.php",
+                "/signup" => "{$path}/pages/signup/index.php",
+                "/login" => "{$path}/pages/login/index.php",
+                "/post" => "{$path}/pages/post/index.php",
+                "/install" => "{$path}/install.php");
+  $ajaxPage = array("/ajax/post" => "{$path}/ajax/post.php",
+                    "/ajax/get_publications" => "{$path}/ajax/get_publications.php");
 
   if ($ajaxPage[$urlpage])
     include($ajaxPage[$urlpage]);

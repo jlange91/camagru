@@ -10,6 +10,7 @@ try
 {
   $db = new PDO($dsn, $usr, $pwd);
   $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $db->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
 }
 catch(PDOException $e)
 {
