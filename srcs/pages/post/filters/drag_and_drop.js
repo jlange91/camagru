@@ -26,11 +26,11 @@ function resizeRatio(width) {
 
 function dragStart(e) {
   if (e.type === "touchstart") {
-    initialX = e.touches[0].clientX - xOffset;
-    initialY = e.touches[0].clientY - yOffset;
+    initialX = e.touches[0].clientX / ratio - xOffset;
+    initialY = e.touches[0].clientY / ratio - yOffset;
   } else {
-    initialX = e.clientX - xOffset;
-    initialY = e.clientY - yOffset;
+    initialX = e.clientX / ratio - xOffset;
+    initialY = e.clientY / ratio - yOffset;
   }
 
   if (e.target === dragItem) {
@@ -51,11 +51,11 @@ function drag(e) {
   e.preventDefault();
 
   if (e.type === "touchmove") {
-  currentX = e.touches[0].clientX - initialX;
-  currentY = e.touches[0].clientY - initialY;
+  currentX = e.touches[0].clientX / ratio - initialX;
+  currentY = e.touches[0].clientY / ratio - initialY;
   } else {
-  currentX = e.clientX - initialX;
-  currentY = e.clientY - initialY;
+  currentX = e.clientX / ratio - initialX;
+  currentY = e.clientY / ratio - initialY;
   }
 
   xOffset = currentX;

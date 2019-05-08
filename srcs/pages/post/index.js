@@ -16,7 +16,6 @@
         img.style.display = "inline";
         commentary.style.display = "none";
         rightArrow.style.display = "inline";
-        commentaryText.value = "";
         break ;
       case 2:
         Carousel.display(false);

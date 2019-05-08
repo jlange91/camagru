@@ -10,6 +10,10 @@
                 '/login' => "{$path}/pages/login/index.php",
                 '/post' => "{$path}/pages/post/index.php",
                 '/install' => "{$path}/install.php");
+  $ajaxPage = array('/ajax/post' => "{$path}/ajax/post.php");
+
+  if ($ajaxPage[$urlpage])
+    include($ajaxPage[$urlpage]);
 
 ?>
 <style><?php include("{$path}/bulma/bulma.min.css"); ?></style>

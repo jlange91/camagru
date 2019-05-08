@@ -2,10 +2,13 @@ FROM php:7-fpm
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+
 # sendmail config
 
 RUN apt-get update
-RUN apt-get install -q -y ssmtp mailutils
+RUN apt-get install -q -y ssmtp mailutils libpng-dev
+RUN docker-php-ext-install gd
+
 
 # root is the person who gets all mail for userids < 1000
 RUN echo "root=jlangecamagru@gmail.com" >> /etc/ssmtp/ssmtp.conf
