@@ -36,7 +36,7 @@ $db->exec('CREATE TABLE IF NOT EXISTS Publications (
     id        SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     date      DATETIME NOT NULL,
     path      VARCHAR(255) NOT NULL,
-    userId    VARCHAR(255) NOT NULL,
+    username  VARCHAR(40) NOT NULL,
     comment   VARCHAR(255) NOT NULL,
     uniqid    VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
@@ -48,7 +48,7 @@ $db->exec('CREATE TABLE IF NOT EXISTS Comments (
     id              SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     date            DATETIME NOT NULL,
     comment         VARCHAR(255) NOT NULL,
-    userId          VARCHAR(255) NOT NULL,
+    username        VARCHAR(40) NOT NULL,
     publicationId   VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 )');
@@ -58,7 +58,7 @@ $db->exec('DROP TABLE IF EXISTS camagru.Likes');
 $db->exec('CREATE TABLE IF NOT EXISTS Likes (
     id              SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     publicationId   VARCHAR(255) NOT NULL,
-    userId          VARCHAR(255) NOT NULL,
+    username        VARCHAR(40) NOT NULL,
     PRIMARY KEY (id)
 )');
 

@@ -1,5 +1,10 @@
 <?php
 
+  if (is_connect() == 0) {
+    http_response_code(400);
+    exit("You must be connected for upload image.");
+  }
+
   $data = json_decode(file_get_contents('php://input'), true);
   $img = $data["imgBase64"];
   $commentary = $data["commentary"];
@@ -39,11 +44,11 @@
   $req = $db->prepare('SELECT * FROM Users WHERE username = :username');
   $req->execute(array(':username' => $_SESSION['username']));
   $userId = $req->fetchAll()[0]['guid'];
-  $req = $db->prepare('INSERT INTO Publications (date, path, userId, comment, uniqid) VALUES (:date, :path, :userId, :comment, :uniqid)');
+  $req = $db->prepare('INSERT INTO Publications (date, path, username, comment, uniqid) VALUES (:date, :path, :username, :comment, :uniqid)');
   $req->execute(array(
                     ':date' => date("Y-m-d H:i:s"),
                     ':path' => $imagePath,
-                    ':userId' => $userId,
+                    ':username' => $_SESSION["username"],
                     ':comment' => $commentary,
                     ':uniqid' => $uniqid));
   save_imagepng($image, $imagePath);

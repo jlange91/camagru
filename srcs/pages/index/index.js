@@ -2,6 +2,8 @@ var limit = 5;
 var nbFiles = 0;
 
 function loadPublications() {
+  if (!isConnect)
+    return ;
   const xhr = getXMLHttpRequest(),
         publicationsWrapper = document.querySelector("#publications-wrapper");
 
@@ -14,12 +16,12 @@ function loadPublications() {
       htmlPublications = "";
       publications.forEach(function(pb) {
         nbFiles++;
-        htmlPublications += card(pb["userId"], pb["comment"], pb["date"], pb["path"]);
+        htmlPublications += card(pb["username"], pb["comment"], pb["date"], pb["path"]);
       });
       publicationsWrapper.innerHTML = htmlPublications;
     }
     else {
-      window.alert(this.response);
+      console.log(this.response);
     }
   }
   xhr.send();
