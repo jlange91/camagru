@@ -22,7 +22,7 @@
         }, 1000);
       }
       else {
-        window.alert(this.response);
+        window.alert(this.responseText);
         sendButton.disabled = false;
       }
     }
