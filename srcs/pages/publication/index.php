@@ -19,3 +19,4 @@
   <?php include("{$path}/components/card/index.php"); ?>
 </div>
 <script><?php include("{$path}/pages/publication/index.js"); ?></script>
+<script><?php include("{$path}/pages/publication/send_request.js"); ?></script>

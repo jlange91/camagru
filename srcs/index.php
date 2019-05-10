@@ -13,8 +13,10 @@
                 "/install" => "{$path}/install.php");
   $ajaxPage = array("/ajax/post" => "{$path}/ajax/post.php",
                     "/ajax/like" => "{$path}/ajax/like.php",
+                    "/ajax/comment" => "{$path}/ajax/comment.php",
                     "/ajax/check_like" => "{$path}/ajax/check_like.php",
                     "/ajax/get_publications" => "{$path}/ajax/get_publications.php",
+                    "/ajax/get_comments" => "{$path}/ajax/get_comments.php",
                     "/ajax/count_comments" => "{$path}/ajax/count_comments.php",
                     "/ajax/count_likes" => "{$path}/ajax/count_likes.php");
 
@@ -31,7 +33,7 @@
     <link rel="icon" type="image/png" href="/assets/camagru_icon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-    <script> <?php include("{$path}/ajax/get_xml_http_request.js"); ?> </script>
+    <script> <?php include("{$path}/get_xml_http_request.js"); ?> </script>
     <title> Camagru </title>
   </head>
   <body>
