@@ -9,9 +9,14 @@
                 "/signup" => "{$path}/pages/signup/index.php",
                 "/login" => "{$path}/pages/login/index.php",
                 "/post" => "{$path}/pages/post/index.php",
+                "/publication" => "{$path}/pages/publication/index.php",
                 "/install" => "{$path}/install.php");
   $ajaxPage = array("/ajax/post" => "{$path}/ajax/post.php",
-                    "/ajax/get_publications" => "{$path}/ajax/get_publications.php");
+                    "/ajax/like" => "{$path}/ajax/like.php",
+                    "/ajax/check_like" => "{$path}/ajax/check_like.php",
+                    "/ajax/get_publications" => "{$path}/ajax/get_publications.php",
+                    "/ajax/count_comments" => "{$path}/ajax/count_comments.php",
+                    "/ajax/count_likes" => "{$path}/ajax/count_likes.php");
 
   if ($ajaxPage[$urlpage])
     include($ajaxPage[$urlpage]);
@@ -25,6 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="/assets/camagru_icon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <script> <?php include("{$path}/ajax/get_xml_http_request.js"); ?> </script>
     <title> Camagru </title>
   </head>

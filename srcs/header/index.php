@@ -1,5 +1,11 @@
 <style><?php include("{$path}/header/index.css"); ?></style>
 <?php
+  $getHTMLValues = "";
+  foreach($_GET as $key => $value)
+  {
+    $getHTMLValues .= $key . "=" . $value;
+  }
+
   if(isset($_GET['logout'])) { disconnect(); }
 
   $buttons = (!is_connect()) ? '
@@ -12,7 +18,7 @@
     <a class="button is-primary" href="/profil">
       <i class="material-icons">person</i>
     </a>
-    <a class="button is-light" href="?logout">
+    <a class="button is-light" href="?logout&' . $getHTMLValues . '">
       Log out
     </a>
   ';

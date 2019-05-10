@@ -23,6 +23,7 @@
         rightArrow.style.display = "none";
         break ;
       default:
+        commentary.style.display = "none";
         Webcam.openCamera();
         Carousel.display(true);
         wrapperButton.style.display = "inline";
@@ -31,7 +32,7 @@
     }
   }
 
-  Webcam.openCamera();
+  displayByStep();
   document.querySelector('.post-snapshot-button').onclick = function () {
     Webcam.takeSnapshot();
   }

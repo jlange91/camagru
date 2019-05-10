@@ -22,7 +22,8 @@
   </div>
 </div>
 <?php include("{$path}/pages/post/filters/carousel.php"); ?>
-<?php include("{$path}/pages/post/commentary/index.php"); ?>
+<?php include("{$path}/components/put_comment/index.php"); ?>
+<script type="text/javascript"><?php include("{$path}/pages/post/send_request.js"); ?></script>
 <script type="text/javascript">
   <?php include("{$path}/pages/post/webcam.js"); ?>
   <?php include("{$path}/pages/post/import.js"); ?>

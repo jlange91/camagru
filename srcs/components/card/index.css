@@ -10,6 +10,14 @@
   overflow: hidden;
 }
 
+.likes-nb {
+  display: inline;
+}
+
+.comments-nb {
+  display: inline;
+}
+
 @media (min-width: 600px) {
   #card-wrapper {
     width: 50%;

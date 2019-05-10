@@ -5,10 +5,10 @@ var confirmPassword;
 
 function buttonChecker() {
   if (
-    emailChecker() &&
-    usernameChecker() &&
-    passwordChecker() &&
-    confirmPasswordChecker()
+    email && emailChecker() &&
+    username && usernameChecker() &&
+    password && passwordChecker() &&
+    confirmPassword && confirmPasswordChecker()
   ) {
     document.getElementById('signup-send-button').disabled = false;
   } else document.getElementById('signup-send-button').disabled = true;

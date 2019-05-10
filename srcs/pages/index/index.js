@@ -2,8 +2,6 @@ var limit = 5;
 var nbFiles = 0;
 
 function loadPublications() {
-  if (!isConnect)
-    return ;
   const xhr = getXMLHttpRequest(),
         publicationsWrapper = document.querySelector("#publications-wrapper");
 
