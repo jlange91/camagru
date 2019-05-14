@@ -1,4 +1,5 @@
 # Need docker-machine, docker-compose, virtualbox
+mkdir srcs/assets/publication
 chmod 777 srcs/assets/publication
 docker-machine create --driver virtualbox Camagru
 export DOCKER_IP=$(docker-machine ip Camagru)
