@@ -9,14 +9,14 @@ function loadPublications() {
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.onload = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      publicationsWrapper.innerHTML = "";
       publications = JSON.parse(this.responseText);
       nbFiles = 0;
-      htmlPublications = "";
       publications.forEach(function(pb) {
         nbFiles++;
-        htmlPublications += card(pb["username"], pb["comment"], pb["date"], pb["path"]);
+        publicationsWrapper.innerHTML += card(pb["username"], pb["comment"], pb["date"], pb["path"], pb["uniqid"]);
+        loadingCard(pb["uniqid"]);
       });
-      publicationsWrapper.innerHTML = htmlPublications;
     }
     else {
       console.log(this.response);

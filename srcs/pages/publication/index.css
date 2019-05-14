@@ -2,5 +2,14 @@
     margin: 10px;
 }
 
+#publication-more-button-wrapper {
+    text-align: center;
+    width: 100%;
+}
+
+#publication-more-button {
+    width: 80%;
+}
+
 @media (min-width: 600px) {
 }

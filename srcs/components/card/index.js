@@ -56,40 +56,38 @@ function likePublication(publicationId) {
   xhr.send();
 }
 
-var card = (username, commentary, date, imgPath) => {
+var card = (username, commentary, date, imgPath, publicationId) => {
   let ret,
-      publicationId = imgPath.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, ""),
       likeHTML = "";
 
-  loadingCard(publicationId);
   if (isConnect) {
-    let onClickHTML = 'onclick="likePublication(\'' + publicationId + '\')"';
+    let onClickHTML = 'onclick="likePublication(\'' + sanitizeHTML(publicationId) + '\')"';
 
     likeHTML =
       '<div class="media-content-right">\
-        <i id="like-' + publicationId + '" class="far fa-heart" style="color: red" ' + onClickHTML + '></i>\
+        <i id="like-' + sanitizeHTML(publicationId) + '" class="far fa-heart" style="color: #FF4545;font-size:24px;" ' + onClickHTML + '></i>\
       </div>';
   }
   ret = '\
-  <div id="card-wrapper">\
+  <div id="card-' + sanitizeHTML(publicationId) + '" class="card-wrapper">\
     <div class="card">\
-      <div class="card-image"  onclick="location.href=\'/publication?publicationId=' + publicationId + '\'">\
+      <div class="card-image"  onclick="location.href=\'/publication?publicationId=' + sanitizeHTML(publicationId) + '\'">\
         <figure class="image is-4by3">\
-          <img src=' + imgPath + ' alt="Placeholder image">\
+          <img src=' + sanitizeHTML(imgPath) + ' alt="Placeholder image">\
         </figure>\
       </div>\
       <div class="card-content">\
         <div class="media">\
           <div class="media-content">\
-            <p class="title is-4">@' + username + '</p>\
-            <p class="subtitle is-6"><div id="likes-nb-' + publicationId + '" class="likes-nb">0</div> likes <div id="comments-nb-' + publicationId + '" class="comments-nb">0</div> comments</p>\
+            <p class="title is-4">@' + sanitizeHTML(username) + '</p>\
+            <p class="subtitle is-6"><div id="likes-nb-' + sanitizeHTML(publicationId) + '" class="likes-nb">0</div> likes <div id="comments-nb-' + sanitizeHTML(publicationId) + '" class="comments-nb">0</div> comments</p>\
           </div>\
           ' + likeHTML + '\
         </div>\
         <div class="content">\
-          <div id="card-comment-' + publicationId + '">' + commentary + '</div>\
+          <div id="card-comment-' + sanitizeHTML(publicationId) + '">' + sanitizeHTML(commentary) + '</div>\
           <br>\
-          <time>' + date + '</time>\
+          <time>' + sanitizeHTML(date) + '</time>\
         </div>\
       </div>\
     </div>\

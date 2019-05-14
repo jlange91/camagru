@@ -10,6 +10,7 @@
     $req->execute(array(':username' => $_SESSION['username'],
                         ':publicationId' => $_GET['publicationId']));
     $resp = $req->fetchAll();
+    echo $req->fetchAll();
     if (empty($resp)) {
       $req = $db->prepare('INSERT INTO Likes (publicationId, username) VALUES (:publicationId, :username)');
       $req->execute(array(':username' => $_SESSION['username'],

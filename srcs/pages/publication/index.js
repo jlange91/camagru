@@ -13,24 +13,83 @@ function $_GET(param) {
 	return vars;
 }
 
+const moreButton = document.querySelector("#publication-more-button"),
+			publicationId = $_GET("publicationId");
+var 	limitComment = 3,
+			nbComments = 0;
+
+var moreButtonUpdate = function() {
+	var xhr = getXMLHttpRequest();
+
+	xhr = getXMLHttpRequest();
+	xhr.open("GET", "/ajax/count_comments?publicationId=" + publicationId, true);
+	xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+	xhr.onload = function() { // Call a function when the state changes.
+		if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+			const maxComments = parseInt(this.response);
+
+			if (limitComment >= maxComments)
+				moreButton.disabled = true;
+			else
+				moreButton.disabled = false;
+		}
+	}
+	xhr.send();
+}
+
 const xhr = getXMLHttpRequest(),
       publicationsWrapper = document.querySelector("#publications-wrapper");
 
-xhr.open("GET", "/ajax/get_publications?limit=1&publicationId=" + $_GET('publicationId'), true);
+xhr.open("GET", "/ajax/get_publications?limit=1&publicationId=" + publicationId, true);
 xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 xhr.onload = function() { // Call a function when the state changes.
-  if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-    publications = JSON.parse(this.responseText);
-    nbFiles = 0;
-    htmlPublications = "";
-    publications.forEach(function(pb) {
-      nbFiles++;
-      htmlPublications += card(pb["username"], pb["comment"], pb["date"], pb["path"]);
-    });
-    publicationsWrapper.innerHTML = htmlPublications;
-  }
-  else {
-    console.log(this.response);
-  }
+	if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+		publicationsWrapper.innerHTML = "";
+		publications = JSON.parse(this.responseText);
+		publications.forEach(function(pb) {
+			publicationsWrapper.innerHTML += card(pb["username"], pb["comment"], pb["date"], pb["path"], pb["uniqid"]);
+			loadingCard(pb["uniqid"]);
+		});
+	}
+	else {
+		console.log(this.response);
+	}
 }
 xhr.send();
+
+function loadComments() {
+  const xhr = getXMLHttpRequest(),
+        commentsWrapper = document.querySelector("#comments-wrapper");
+
+  xhr.open("GET", "/ajax/get_comments?limit=" + limitComment + "&publicationId=" + publicationId, true);
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  xhr.onload = function() { // Call a function when the state changes.
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+			commentsWrapper.innerHTML = "";
+      comments = JSON.parse(this.responseText);
+      nbComments = 0;
+      comments.forEach(function(pb) {
+        nbComments++;
+        commentsWrapper.innerHTML += getComment(pb["username"], pb["comment"], pb["date"], pb["uniqid"]);
+				loadingComment(pb['uniqid']);
+      });
+    }
+    else {
+      console.log(this.response);
+    }
+  }
+  xhr.send();
+}
+
+loadComments();
+
+
+window.onload = function() {
+	moreButtonUpdate();
+}
+
+moreButton.onclick = function() {
+	limitComment = limitComment + 3;
+	moreButtonUpdate();
+	loadComments();
+}

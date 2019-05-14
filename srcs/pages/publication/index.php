@@ -8,10 +8,12 @@
   ?>
   <div id="publications-wrapper">
   </div>
+  <div id="publication-more-button-wrapper">
+    <button id="publication-more-button" class="button is-primary">Load more comments</button>
+  </div>
   <div id="comments-wrapper">
   </div>
   <?php
-    include("{$path}/components/get_comment/index.php");
     include("{$path}/components/get_comment/index.php");
     if (is_connect())
       include("{$path}/components/put_comment/index.php");

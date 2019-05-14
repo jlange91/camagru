@@ -1,0 +1,4 @@
+.tabs li.is-active a {
+  border-bottom-color: #01D1B2;
+  color: #01D1B2;
+}
