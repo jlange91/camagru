@@ -37,6 +37,20 @@ function loadingCard(publicationId) {
         }
       }
       xhr.send();
+      xhr = getXMLHttpRequest();
+      xhr.open("GET", "/ajax/check_publication?publicationId=" + publicationId, true);
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      xhr.onload = function() { // Call a function when the state changes.
+        let deleteWrapper = document.querySelector("#card-delete-" + publicationId);
+
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          if (this.response == "1")
+            deleteWrapper.innerHTML = '<button class="delete" onclick="deletePublication(\'' + publicationId + '\')"></button>';
+          else
+            deleteWrapper.innerHTML = '';
+        }
+      }
+      xhr.send();
   }
 }
 
@@ -56,6 +70,24 @@ function likePublication(publicationId) {
   xhr.send();
 }
 
+function deletePublication(publicationId) {
+  if (window.confirm("Do you really want to delete this publication?")) {
+    const xhr = getXMLHttpRequest();
+
+    xhr.open("GET", "/ajax/delete_publication?publicationId=" + publicationId, true);
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.onload = function() { // Call a function when the state changes.
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        window.location.replace("/");
+      }
+      else {
+        window.alert("Error.");
+      }
+    }
+    xhr.send();
+  }
+}
+
 var card = (username, commentary, date, imgPath, publicationId) => {
   let ret,
       likeHTML = "";
@@ -66,6 +98,7 @@ var card = (username, commentary, date, imgPath, publicationId) => {
     likeHTML =
       '<div class="media-content-right">\
         <i id="like-' + sanitizeHTML(publicationId) + '" class="far fa-heart" style="color: #FF4545;font-size:24px;" ' + onClickHTML + '></i>\
+        <div id="card-delete-' + publicationId + '" style="display:inline;"></div>\
       </div>';
   }
   ret = '\

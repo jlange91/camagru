@@ -17,23 +17,23 @@ function loadingComment(commentId) {
 }
 
 function deleteComment(commentId) {
-  const comment = document.querySelector("#comment-" + commentId);
-  const xhr = getXMLHttpRequest();
+  if (window.confirm("Do you really want to delete this comment?")) {
+    const xhr = getXMLHttpRequest();
 
-  xhr.open("GET", "/ajax/delete_comment?commentId=" + commentId, true);
-  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  xhr.onload = function() { // Call a function when the state changes.
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      comment.remove();
-      loadComments();
-      loadingCard(publicationId);
-      moreButtonUpdate();
+    xhr.open("GET", "/ajax/delete_comment?commentId=" + commentId, true);
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.onload = function() { // Call a function when the state changes.
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        loadComments();
+        loadingCard(publicationId);
+        moreButtonUpdate();
+      }
+      else {
+        window.alert("Error.");
+      }
     }
-    else {
-      window.alert("Error.");
-    }
+    xhr.send();
   }
-  xhr.send();
 }
 
 var getComment = (username, comment, date, commentId) => {

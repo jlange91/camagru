@@ -17,10 +17,12 @@
                     "/ajax/comment" => "{$path}/ajax/comment.php",
                     "/ajax/check_like" => "{$path}/ajax/check_like.php",
                     "/ajax/check_comment" => "{$path}/ajax/check_comment.php",
+                    "/ajax/check_publication" => "{$path}/ajax/check_publication.php",
                     "/ajax/get_publications" => "{$path}/ajax/get_publications.php",
                     "/ajax/get_comments" => "{$path}/ajax/get_comments.php",
                     "/ajax/count_comments" => "{$path}/ajax/count_comments.php",
                     "/ajax/count_likes" => "{$path}/ajax/count_likes.php",
+                    "/ajax/delete_publication" => "{$path}/ajax/delete_publication.php",
                     "/ajax/delete_comment" => "{$path}/ajax/delete_comment.php");
 
   if ($ajaxPage[$urlpage])
