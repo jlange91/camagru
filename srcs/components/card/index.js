@@ -98,7 +98,7 @@ var card = (username, commentary, date, imgPath, publicationId) => {
     likeHTML =
       '<div class="media-content-right">\
         <i id="like-' + sanitizeHTML(publicationId) + '" class="far fa-heart" style="color: #FF4545;font-size:24px;" ' + onClickHTML + '></i>\
-        <div id="card-delete-' + publicationId + '" style="display:inline;"></div>\
+        <div id="card-delete-' + sanitizeHTML(publicationId) + '" style="display:inline;"></div>\
       </div>';
   }
   ret = '\
@@ -119,8 +119,7 @@ var card = (username, commentary, date, imgPath, publicationId) => {
         </div>\
         <div class="content">\
           <div id="card-comment-' + sanitizeHTML(publicationId) + '">' + sanitizeHTML(commentary) + '</div>\
-          <br>\
-          <time>' + sanitizeHTML(date) + '</time>\
+          <time style="float:right;">' + sanitizeHTML(date) + '</time>\
         </div>\
       </div>\
     </div>\

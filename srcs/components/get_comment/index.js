@@ -40,19 +40,21 @@ var getComment = (username, comment, date, commentId) => {
   let ret;
 
   ret = '\
-  <article id="comment-' + sanitizeHTML(commentId) + '" class="media comment">\
-    <div class="media-content">\
+  <div class="comment">\
+    <div class="card-content">\
+      <div class="media">\
+        <div class="media-content">\
+              <strong>@' + sanitizeHTML(username) + '</strong>\
+              <br>\
+              ' + sanitizeHTML(comment) +'<br/>\
+        </div>\
+        <div id="comment-delete-button-' + sanitizeHTML(commentId) + '" class="media-content-right">\
+        </div>\
+      </div>\
       <div class="content">\
-        <p>\
-          <strong>@' + sanitizeHTML(username) + '</strong>\
-          <br>\
-          ' + sanitizeHTML(comment) +'\
-        </p>\
-        <time>' + sanitizeHTML(date) + '</time>\
+        <time style="float:right;">' + sanitizeHTML(date) + '</time>\
       </div>\
     </div>\
-    <div id="comment-delete-button-' + sanitizeHTML(commentId) + '" class="media-right">\
-    </div>\
-  </article>'
+  </div>'
   return (ret);
 }
