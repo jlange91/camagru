@@ -2,3 +2,32 @@
   border-bottom-color: #01D1B2;
   color: #01D1B2;
 }
+
+.profil-image {
+  width: 250px;
+  margin: 5px;
+}
+
+#profil-pictures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 400px) {
+  .profil-image {
+    flex: 0 0 calc(33.333% - 10px);
+  }
+}
+
+@media (min-width: 800px) {
+  .profil-image {
+    flex: 0 0 calc(25% - 10px);
+  }
+}
+
+@media (min-width: 1200px) {
+  .profil-image {
+    flex: 0 0 calc(16.666% - 10px);
+  }
+}

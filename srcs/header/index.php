@@ -15,7 +15,7 @@
     <a class="button is-light" href="/login">
       Log in
     </a>' : '
-    <a class="button is-primary" href="/profil">
+    <a class="button is-primary" href="/profil?username=' . $_SESSION["username"] . '">
       <i class="material-icons">person</i>
     </a>
     <a class="button is-light" href="?logout&' . $getHTMLValues . '">

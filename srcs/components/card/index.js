@@ -112,7 +112,7 @@ var card = (username, commentary, date, imgPath, publicationId) => {
       <div class="card-content">\
         <div class="media">\
           <div class="media-content">\
-            <p class="title is-4">@' + sanitizeHTML(username) + '</p>\
+            <a href="/profil?username=' + sanitizeHTML(username) + '"><p class="title is-4">@' + sanitizeHTML(username) + '</p></a>\
             <p class="subtitle is-6"><div id="likes-nb-' + sanitizeHTML(publicationId) + '" class="likes-nb">0</div> likes <div id="comments-nb-' + sanitizeHTML(publicationId) + '" class="comments-nb">0</div> comments</p>\
           </div>\
           ' + likeHTML + '\

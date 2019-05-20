@@ -46,7 +46,7 @@ var getComment = (username, comment, date, commentId) => {
         <div class="media-content">\
               <strong>@' + sanitizeHTML(username) + '</strong>\
               <br>\
-              ' + sanitizeHTML(comment) +'<br/>\
+              ' + sanitizeHTML(comment) +'\
         </div>\
         <div id="comment-delete-button-' + sanitizeHTML(commentId) + '" class="media-content-right">\
         </div>\
