@@ -1,3 +1,11 @@
+.menu-list {
+  text-align: center;
+}
+
+.menu-list a.is-active {
+  background-color: #01D1B2;
+}
+
 .tabs li.is-active a {
   border-bottom-color: #01D1B2;
   color: #01D1B2;
