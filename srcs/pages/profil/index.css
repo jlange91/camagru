@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.menu-list a {
+  align-items: center;
+  border-bottom-color: #dbdbdb;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: #dbdbdb;
+  border-top-style: solid;
+  border-top-width: 1px;
+  color: #4a4a4a;
+  padding: 0.5em 1em;
+  margin: 5px;
+  vertical-align: top;
+}
+
 .menu-list a.is-active {
   background-color: #01D1B2;
 }
@@ -20,6 +34,23 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+#settings-user {
+  display: none;
+}
+
+#settings-password {
+  display: none;
+}
+
+#settings-email {
+  display: none;
+}
+
+#settings-tabs input {
+  margin: 5px;
+  width: 80%;
 }
 
 @media (min-width: 400px) {
