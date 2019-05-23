@@ -125,7 +125,7 @@
                         ':email' => $_POST['email'],
                         ':username' => $_POST['username'],
                         ':password' => hash_password($_POST['password']),
-                        ':mailHash' => hash_email($_POST['email'], $_POST['password'], $_POST['username']),
+                        ':mailHash' => hash_email($_POST['email']),
                         ':sendMailDate' => date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")." -2 minutes"))));
       send_confirm_mail($_POST['email']);
       echo "

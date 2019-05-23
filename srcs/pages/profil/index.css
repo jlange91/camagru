@@ -48,9 +48,37 @@
   display: none;
 }
 
-#settings-tabs input {
+#settings-general {
+  display: none;
+}
+
+#settings-email-danger {
+  display: none;
+}
+
+#settings-username-danger {
+  display: none;
+}
+
+#settings-password-danger {
+  display: none;
+}
+
+#settings-confirmPassword-danger {
+  display: none;
+}
+
+#settings-password-warning {
+  display: none;
+}
+
+.input {
   margin: 5px;
   width: 80%;
+}
+
+.checkbox {
+  width: 10px;
 }
 
 @media (min-width: 400px) {

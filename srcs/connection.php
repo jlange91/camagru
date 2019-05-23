@@ -3,8 +3,8 @@
     return (hash('sha512', 'coucou les correcteurs' . strlen($pwd) . $pwd . 'met moi 125 stp'));
   }
 
-  function hash_email($email, $pwd, $usr) {
-    return (hash('sha256', $email . strlen($pwd) . $usr));
+  function hash_email($email) {
+    return (hash('sha256', 'on rajoute un petit peu de sel' . strlen($email) . $email . 'par si et par la'));
   }
 
   function is_connect() {

@@ -25,6 +25,7 @@ $db->exec('CREATE TABLE IF NOT EXISTS Users (
     password          VARCHAR(512) NOT NULL,
     mailHash          VARCHAR(256) NOT NULL,
     sendMailDate      DATETIME NOT NULL,
+    sendMailComment   BOOLEAN NOT NULL DEFAULT 1,
     completed         BOOLEAN NOT NULL DEFAULT 0,
     PRIMARY KEY(username)
 )');

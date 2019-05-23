@@ -18,13 +18,18 @@
                     "/ajax/check_like" => "{$path}/ajax/check_like.php",
                     "/ajax/check_comment" => "{$path}/ajax/check_comment.php",
                     "/ajax/check_publication" => "{$path}/ajax/check_publication.php",
+                    "/ajax/check_send_mail_comment" => "{$path}/ajax/check_send_mail_comment.php",
                     "/ajax/get_publications" => "{$path}/ajax/get_publications.php",
                     "/ajax/get_publications_user" => "{$path}/ajax/get_publications_user.php",
                     "/ajax/get_comments" => "{$path}/ajax/get_comments.php",
                     "/ajax/count_comments" => "{$path}/ajax/count_comments.php",
                     "/ajax/count_likes" => "{$path}/ajax/count_likes.php",
                     "/ajax/delete_publication" => "{$path}/ajax/delete_publication.php",
-                    "/ajax/delete_comment" => "{$path}/ajax/delete_comment.php");
+                    "/ajax/delete_comment" => "{$path}/ajax/delete_comment.php",
+                    "/ajax/change_username" => "{$path}/ajax/change_username.php",
+                    "/ajax/change_password" => "{$path}/ajax/change_password.php",
+                    "/ajax/change_send_mail_comment" => "{$path}/ajax/change_send_mail_comment.php",
+                    "/ajax/change_email" => "{$path}/ajax/change_email.php");
 
   if ($ajaxPage[$urlpage])
     include($ajaxPage[$urlpage]);
