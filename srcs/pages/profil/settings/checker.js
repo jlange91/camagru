@@ -73,6 +73,11 @@ function confirmPasswordChecker() {
   return ret;
 }
 
+function checkPasswordButton() {
+  const button = document.getElementById('settings-password-button');
+  button.disabled = (passwordChecker() && confirmPasswordChecker()) ? false : true;
+}
+
 function emailListener() {
   email = document.getElementById('new-email').value;
   emailChecker();
@@ -84,8 +89,10 @@ function usernameListener() {
 function passwordListener() {
   password = document.getElementById('new-password').value;
   passwordChecker();
+  checkPasswordButton()
 }
 function confirmPasswordListener() {
   confirmPassword = document.getElementById('new-confirmPassword').value;
   confirmPasswordChecker();
+  checkPasswordButton()
 }

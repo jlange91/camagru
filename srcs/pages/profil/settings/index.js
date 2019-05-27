@@ -42,7 +42,7 @@ function sendChangeEmailOnClick() {
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.onload = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      window.alert("Success request.");
+      window.alert(this.response);
     }
     else {
       console.log(this.response);
@@ -59,7 +59,7 @@ function sendChangeUsernameOnClick() {
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.onload = function() { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      window.alert("Success request.");
+      window.alert(this.response);
       window.location.href = "/";
     }
     else {
@@ -78,7 +78,7 @@ function sendChangePasswordOnClick() {
   xhr.onload = function() { // Call a function when the state changes.
     console.log(this.response);
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      window.alert("Success request.");
+      window.alert(this.response);
       window.location.href = "/";
     }
     else {
