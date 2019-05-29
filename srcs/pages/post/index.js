@@ -4,9 +4,9 @@
     const img = document.querySelector('#post-image'),
           wrapperButton = document.querySelector('#post-wrapper-button'),
           arrowButtons = document.querySelector('#post-wrapper-arrow-buttons'),
-          commentary = document.querySelector('#post-commentary'),
+          commentary = document.querySelector('#commentary'),
           rightArrow = document.querySelector('#post-next-button'),
-          commentaryText = document.querySelector('#post-commentary-text');
+          commentaryText = document.querySelector('#commentary-text');
 
     switch (step) {
       case 1:

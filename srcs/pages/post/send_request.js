@@ -1,5 +1,5 @@
-const text = document.querySelector("#post-commentary-text");
-const sendButton = document.querySelector("#post-commentary-button");
+const text = document.querySelector("#commentary-text");
+const sendButton = document.querySelector("#commentary-button");
 
 sendButton.onclick = function() {
   const filterId = Carousel.currId,

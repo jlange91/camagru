@@ -19,11 +19,11 @@ catch(PDOException $e)
 $db->exec('DROP TABLE IF EXISTS camagru.Users');
 
 $db->exec('CREATE TABLE IF NOT EXISTS Users (
-    guid              VARCHAR(255) NOT NULL,
     email             VARCHAR(255) NOT NULL,
     username          VARCHAR(40) NOT NULL,
     password          VARCHAR(512) NOT NULL,
     mailHash          VARCHAR(256) NOT NULL,
+    resetPasswordHash VARCHAR(256) NOT NULL,
     sendMailDate      DATETIME NOT NULL,
     sendMailComment   BOOLEAN NOT NULL DEFAULT 1,
     completed         BOOLEAN NOT NULL DEFAULT 0,

@@ -11,6 +11,7 @@
                 "/post" => "{$path}/pages/post/index.php",
                 "/publication" => "{$path}/pages/publication/index.php",
                 "/profil" => "{$path}/pages/profil/index.php",
+                "/account-recovery" => "{$path}/pages/account-recovery/index.php",
                 "/install" => "{$path}/install.php");
   $ajaxPage = array("/ajax/post" => "{$path}/ajax/post.php",
                     "/ajax/like" => "{$path}/ajax/like.php",
@@ -26,6 +27,7 @@
                     "/ajax/count_likes" => "{$path}/ajax/count_likes.php",
                     "/ajax/delete_publication" => "{$path}/ajax/delete_publication.php",
                     "/ajax/delete_comment" => "{$path}/ajax/delete_comment.php",
+                    "/ajax/reset_password" => "{$path}/ajax/reset_password.php",
                     "/ajax/change_username" => "{$path}/ajax/change_username.php",
                     "/ajax/change_password" => "{$path}/ajax/change_password.php",
                     "/ajax/change_send_mail_comment" => "{$path}/ajax/change_send_mail_comment.php",

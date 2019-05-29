@@ -4,6 +4,7 @@
     echo '<script>document.location.href="/";</script>';
     die("You are already connected.");
   }
+  include("{$path}/pages/signup/send_email.php");
   include("{$path}/pages/login/confirm_email.php");
   $loginForm = '
   <div id="login-wrapper" class="card">
@@ -11,7 +12,8 @@
     <form id="login-form" method="post" action="/login">
       <input name="username" class="input" type="text" placeholder="Username"><br/>
       <input name="password" class="input" type="password" placeholder="Password"><br/>
-      <input id="login-send-button" class="button is-primary" type="submit" value="Log in" />
+      <input id="login-send-button" class="button is-primary" type="submit" value="Log in" /><br/>
+      <a href="/account-recovery">Forgot password?</a>
     </form>
   </div>';
   if ($_POST['username'] || $_POST['password'])
@@ -53,4 +55,5 @@
   else
     echo $loginForm;
   include("{$path}/pages/login/resend_email.php");
+
 ?>

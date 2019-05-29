@@ -1,5 +1,4 @@
 <?php
-  include("{$path}/pages/signup/send_email.php");
 
   if ($_GET['resendEmail'])
   {

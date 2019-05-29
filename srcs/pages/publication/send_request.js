@@ -1,5 +1,5 @@
-const text = document.querySelector("#post-commentary-text"),
-      sendButton = document.querySelector("#post-commentary-button");
+const text = document.querySelector("#commentary-text"),
+      sendButton = document.querySelector("#commentary-button");
 
 if (sendButton) {
   sendButton.onclick = function() {

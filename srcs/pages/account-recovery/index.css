@@ -1,0 +1,74 @@
+#account-recovery-wrapper {
+  width: 60%;
+  max-width: 600px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#account-recovery-success {
+  background: #23d160;
+  width: 50%;
+  text-align: center;
+  margin: 10 auto;
+  color: #fff;
+}
+
+#account-recovery-error {
+  background: #ff2b56;
+  width: 50%;
+  text-align: center;
+  margin: 10 auto;
+  color: #fff;
+}
+
+#account-recovery-form {
+  margin: 0 auto;
+}
+
+#account-recovery-title {
+  padding: 10px;
+}
+
+.input {
+  width: 60%;
+  margin: 10px;
+}
+
+.textfield {
+  display: inline;
+  margin: 10px;
+}
+
+#account-recovery-password-button, #account-recovery-send-button {
+  width: 60%;
+  right: 0;
+  margin: 30px;
+}
+
+#account-recovery-send-button.input {
+  box-shadow: none;
+}
+
+#account-recovery-password-danger {
+  display: none;
+}
+
+#account-recovery-password-warning {
+  display: none;
+}
+
+#account-recovery-confirmPassword-danger {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  #account-recovery-wrapper {
+    width: 100%;
+  }
+  .input {
+    width: 80%;
+  }
+  .card {
+    box-shadow: none;
+  }
+}

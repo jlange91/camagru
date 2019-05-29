@@ -1,16 +1,18 @@
 <?php
 
-  if (is_connect() == 0) {
-    http_response_code(400);
-    exit("You must be connected for delete a comment.");
-  }
-
   $errStr = "Bad Request.";
+
+
+  $data = json_decode(file_get_contents('php://input'), true);
+  $username = $data["username"];
+  $hash = $data["hash"];
+  $password = hash_password($data["password"]);
 
   function passwordChecker() {
     global $errStr;
-    
-    if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/', $_POST['newPassword'])) {
+    global $data;
+
+    if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/', $data["password"])) {
       $errStr = "This password is invalid format.";
       return (1);
     }
@@ -29,10 +31,18 @@
     //^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})
   }
 
-  if ($_SESSION['username'] && $_POST['newPassword'] && !passwordChecker()) {
-    $req = $db->prepare('UPDATE Users SET password = :newPassword WHERE username = :username');
-    $req->execute(array(':newPassword' => hash_password($_POST['newPassword']),
-                        ':username' => $_SESSION['username']));
+  if (!passwordChecker()) {
+    $req = $db->prepare('SELECT * FROM Users WHERE username = :username AND resetPasswordHash = :hash');
+    $req->execute(array(':username' => $username,
+                        ':hash' => $hash));
+    $value = $req->fetchAll();
+    if ($value && $value[0]) {
+        $req = $db->prepare("UPDATE Users SET password = :password, resetPasswordHash = '' WHERE username = :username");
+        $req->execute(array(':username' => $username,
+                            ':password' => $password));
+    }
+    else
+      exit ($errStr);
   }
   else
     exit($errStr);

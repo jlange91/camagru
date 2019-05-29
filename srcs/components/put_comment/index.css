@@ -1,8 +1,16 @@
-#post-commentary {
+#commentary {
+  position: relative;
   margin: 5 auto;
   width: 80%;
 }
 
-#post-commentary-button {
+#commentary-button {
   margin: 5 auto;
+}
+
+#counter {
+  z-index: 2;
+  position: absolute;
+  top: 3px;
+  right: 3px;
 }

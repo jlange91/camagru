@@ -120,9 +120,8 @@
     $fails += confirmPasswordChecker();
     if ($fails === 0)
     {
-      $req = $db->prepare('INSERT INTO Users (guid, email, username, password, completed, mailHash, sendMailDate) VALUES (:guid, :email,:username,:password,0,:mailHash,:sendMailDate)');
-      $req->execute(array(':guid' => guidv4(),
-                        ':email' => $_POST['email'],
+      $req = $db->prepare('INSERT INTO Users (email, username, password, completed, mailHash, resetPasswordHash, sendMailDate) VALUES (:email,:username,:password,0,:mailHash, "", :sendMailDate)');
+      $req->execute(array(':email' => $_POST['email'],
                         ':username' => $_POST['username'],
                         ':password' => hash_password($_POST['password']),
                         ':mailHash' => hash_email($_POST['email']),
