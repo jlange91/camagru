@@ -9,6 +9,7 @@ if (sendButton) {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function() { // Call a function when the state changes.
       sendButton.disabled = false;
+
       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         loadingCard(publicationId);
         loadComments();

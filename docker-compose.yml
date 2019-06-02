@@ -45,6 +45,8 @@ services:
    - ./srcs:/var/www
   environment:
    - DOCKER_IP
+   - DB_USER
+   - DB_PASSWORD
 
 volumes:
  db-data:

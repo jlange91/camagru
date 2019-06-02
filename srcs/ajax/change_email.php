@@ -11,12 +11,12 @@
     global $db;
     global $errStr;
 
-    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($_GET['newEmail'], FILTER_VALIDATE_EMAIL)) {
       $errStr = "This email is invalid format.";
       return (1);
     }
     $req = $db->prepare('SELECT email FROM Users WHERE email = :email');
-    $req->execute(array(':email' => $_POST['email']));
+    $req->execute(array(':email' => $_GET['newEmail']));
     $value = $req->fetchAll();
     if ($value) {
       $errStr = "This email is already use.";

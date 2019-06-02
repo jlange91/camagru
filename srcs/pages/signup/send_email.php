@@ -21,7 +21,6 @@
     Please Confirm your account here : http://{$host}/login?email={$email}&mailHash={$hash}";
     $headers = 'From: jlangecamagru@gmail.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-
     if (mail($to, $subject, $message, $headers))
     {
       $req = $db->prepare('UPDATE Users SET sendMailDate = :sendMailDate WHERE email = :email');
