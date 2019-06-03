@@ -1,5 +1,7 @@
 FROM nginx:latest
 
+ARG DOCKER_IP
+
 RUN mkdir /etc/nginx/snippets/
 RUN apt-get update
 RUN apt-get install openssl

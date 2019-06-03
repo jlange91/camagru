@@ -4,17 +4,18 @@ services:
 
  db:
   image: mysql:5.7.5
+  command: --max_allowed_packet=512M --innodb_log_file_size=512M --wait_timeout=31536000
   container_name: db
-  command: --max_allowed_packet=32505856
   volumes:
    - db-data:/var/lib/mysql
   restart: always
   ports:
    - 3306:3306
   environment:
-   MYSQL_USER: root
-   MYSQL_ROOT_PASSWORD: root
+   MYSQL_USER: ${DB_USER}
+   MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
    MYSQL_DATABASE: camagru
+   TZ: "Europe/Paris"
 
  phpmyadmin:
   image: phpmyadmin/phpmyadmin
@@ -26,7 +27,10 @@ services:
     - db:db
 
  nginx:
-  build: ./Dockerfiles/nginx
+  build:
+    context: ./Dockerfiles/nginx
+    args:
+      - DOCKER_IP=$DOCKER_IP
   container_name: nginx
   restart: always
   ports:
@@ -38,7 +42,11 @@ services:
     - php
 
  php:
-  build: ./Dockerfiles/php
+  build:
+    context: ./Dockerfiles/php
+    args:
+      - MAIL_USER=$MAIL_USER
+      - MAIL_PASSWORD=$MAIL_PASSWORD
   container_name: php
   restart: always
   volumes:
@@ -47,6 +55,8 @@ services:
    - DOCKER_IP
    - DB_USER
    - DB_PASSWORD
+   - MAIL_USER
+   - MAIL_PASSWORD
 
 volumes:
  db-data:
