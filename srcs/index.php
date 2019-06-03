@@ -1,6 +1,8 @@
 <?php
 
   session_start();
+  define('TIMEZONE', 'Europe/Paris');
+  date_default_timezone_set(TIMEZONE);
   require('config/database.php');
   require('connection.php');
   $urlpage = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
