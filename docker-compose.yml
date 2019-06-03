@@ -39,15 +39,15 @@ services:
   volumes:
    - ./srcs:/var/www
   depends_on:
-    - php
+    - camagru_php
 
- php:
+ camagru_php:
   build:
     context: ./Dockerfiles/php
     args:
       - MAIL_USER=$MAIL_USER
       - MAIL_PASSWORD=$MAIL_PASSWORD
-  container_name: php
+  container_name: camagru_php
   restart: always
   volumes:
    - ./srcs:/var/www
