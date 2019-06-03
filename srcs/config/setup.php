@@ -47,4 +47,8 @@ $db->exec('CREATE TABLE IF NOT EXISTS Likes (
     CONSTRAINT id PRIMARY KEY (publicationId,username)
 )');
 
+$setup = file_get_contents('setup.sql');
+
+$db->exec($setup);
+
 ?>
