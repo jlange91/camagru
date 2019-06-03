@@ -39,9 +39,9 @@ services:
   volumes:
    - ./srcs:/var/www
   depends_on:
-    - camagru_php
+    - php
 
- camagru_php:
+ php:
   build:
     context: ./Dockerfiles/php
     args:
